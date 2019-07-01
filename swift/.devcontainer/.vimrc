@@ -77,13 +77,24 @@ Plug 'Vigemus/iron.nvim'
 Plug 'jph00/swift-apple'
 Plug 'Zaptic/elm-vim' " not maintained elm 0.19 Plug 'elmcast/elm-vim'
 " === Color Schemes
-Plug 'morhetz/gruvbox'
-Plug 'drewtempelmeyer/palenight.vim'
+Plug 'tomasiser/vim-code-dark'
 " === Environment
 Plug 'lambdalisue/vim-pyenv'
 let g:pyenv#auto_activate=0
 
 call plug#end()
+
+"" color theme config
+if (has("termguicolors"))
+    " set termguicolors
+endif
+
+" ================== Color Scheme ===================== {{{1
+if has('nvim') && !empty(glob('~/.vim/plugged/vim-code-dark'))
+    set background=dark
+    colorscheme codedark
+    let g:airline_theme = 'codedark'
+endif
 
 " ===================== More ========================= {{{1
 
@@ -97,20 +108,7 @@ endif
 if has('nvim') && !empty(glob('~/.vim/plugged/iron.nvim'))
     " nvim specific things
     exec 'lua require("iron").core.add_repl_definitions{python = {python = {command = {"python3"} } }, swift = {swift = {command = {"swift"} } } }'
-    exec 'lua require("iron").core.set_config{repl_open_cmd = "vsplit"}'
-endif
-
-"" color theme config
-if (has("termguicolors"))
-    " set termguicolors
-endif
-
-if has('nvim') && !empty(glob('~/.vim/plugged/gruvbox'))
-    let g:palenight_terminal_italics=1
-    let g:gruvbox_italic=1
-    let g:gruvbox_italicize_strings=1
-    colorscheme gruvbox
-    set background=dark
+    exec 'lua require("iron").core.set_config{repl_open_cmd = "rightbelow vsplit"}'
 endif
 
 "" tab completion config

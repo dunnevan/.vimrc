@@ -1,0 +1,14 @@
+{
+    "languageserver": {
+        "swift": {
+            "command": "sourcekit-lsp",
+            "args": [],
+            "filetypes": [
+                "swift"
+            ],
+            "cwd": "./",
+            "initializationOptions": {},
+            "settings": {}
+        }
+    }
+}
